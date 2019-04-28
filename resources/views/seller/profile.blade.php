@@ -117,7 +117,7 @@
 </head>
 <body>
 	<div align="center" class="header">
-  		<h2><%=first_name%></h2> 
+  		<h2> {{$userInfo[0]->first_name}} </h2> 
 	</div>
 
 	<div class="row">
@@ -140,32 +140,32 @@
 				<tr>
 					<td width="35%">Id</td>
 					<td width="2%">:</td>
-					<td><%=u_id%></td>
+					<td>{{$userInfo[0]->u_id}}</td>
 				</tr>
 				<tr>
 					<td>User Name</td>
 					<td>:</td>
-					<td><%=first_name%></td>
+					<td>{{$userInfo[0]->first_name}}</td>
 				</tr>
 				<tr>
 					<td>Password</td>
 					<td>:</td>
-					<td><%=u_password%></td>
+					<td>{{$userInfo[0]->u_password}}</td>
 				</tr>
 				<tr>
 					<td>Type</td>
 					<td>:</td>
-					<td><%=u_type%></td>
+					<td>{{$userInfo[0]->u_type}}</td>
 				</tr>
 				<tr>
 					<td>Email</td>
 					<td>:</td>
-					<td><%=u_email%></td>
+					<td>{{$userInfo[0]->u_email}}</td>
 				</tr>
 				<tr>
 					<td>Mobile</td>
 					<td>:</td>
-					<td><%=u_mobile%></td>
+					<td>{{$userInfo[0]->u_mobile}}</td>
 				</tr>
 			</table>
 	    </div>

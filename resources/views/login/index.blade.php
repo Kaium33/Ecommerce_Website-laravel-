@@ -6,11 +6,12 @@
 <body>
 
 	<form method="post">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<fieldset>
 			<legend>Login Form</legend>
 			<table>
 				<tr>
-					<td>Username</td>
+					<td>Useremail</td>
 					<td><input type="text" name="uemail"></td>
 				</tr>
 				<tr>

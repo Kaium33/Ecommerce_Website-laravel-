@@ -156,47 +156,52 @@
 		      <li>The Island</li>
 		      
 		      <div style="background-color: #ffffff">
-		      	<% for(var i=0; i < pList.length*10; i++){ %>
-			    	<br>
-			    <% } %>
+		      	<!-- <% for(var i=0; i < productsInfo.length*10; i++){ %> -->
+		      	<?php 
+		      	for($i=0; $i < count($productsInfo)*10; $i++){ 
+			    	echo "<br>";
+			    }
+			    ?>
 	    	  </div>
 		    </ul>
 	    </div>
 	    
-		<% for(var i=0; i < pList.length; i++){ %>
+		<!-- <% for(var i=0; i < productsInfo.length; i++){ %> -->
+		<?php for($i=0; $i < count($productsInfo); $i++){ ?>
 			<div class="col-6 col-s-9"  style="margin-left: 70px; margin-right: 70px;background-color:hsla(120,60%,70%,0.3); border-radius: 25px;border: 2px solid #73AD21; padding: 20px">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<table>
 					<tr>
 						<td>Product Name: </td>
-						<td><%= pList[i].product_name %></td>
+						<td>{{$productsInfo[$i]->product_name}}</td>
 					</tr>
 					<tr>
 						<td>Price: </td>
-						<td><%= pList[i].product_price %></td>
+						<td>{{$productsInfo[$i]->product_price}}</td>
 					</tr>
 					<tr>
 						<td>Product Available: </td>
-						<td><%= pList[i].product_avlble %></td>
+						<td>{{$productsInfo[$i]->product_avlble}}</td>
 					</tr>
 					<tr>
 						<td>Product Sell Price: </td>
-						<td><%= pList[i].product_sell_price %></td>
+						<td>{{$productsInfo[$i]->product_sell_price}}</td>
 					</tr>
 					<tr>
 						<td>Product Original Price: </td>
-						<td><%= pList[i].product_original_price %></td>
+						<td>{{$productsInfo[$i]->product_original_price}}</td>
 					</tr>
 					<tr>
 						<td>Category Id: </td>
-						<td><%= pList[i].category_id %></td>
+						<td>{{$productsInfo[$i]->category_id}}</td>
 					</tr>
 					<tr>
-						<td><a href="/seller/edit/<%= pList[i].product_id %>"><button class="button">Edit</button></a></td>
-						<td><a href="/seller/delete/<%= pList[i].product_id %>"><button class="button">Delete</button></a></td>
+						<td><a href="/seller/edit/{{$productsInfo[$i]->product_id}}"><button class="button">Edit</button></a></td>
+						<td><a href="/seller/delete/{{$productsInfo[$i]->product_id}}"><button class="button">Delete</button></a></td>
 					</tr>
 				</table>
 			</div>
-		<% } %>
+		<?php } ?>
 	</div>
 
 <!-- 

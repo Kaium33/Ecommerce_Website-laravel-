@@ -117,7 +117,7 @@
 </head>
 <body>
 	<div align="center" class="header">
-  		<h2>Welcome, <%=name%></h2> 
+  		<h2>Welcome, {{$userInfo[0]->first_name}}</h2> <!-- <%=name%> -->
 	</div>
 
 	<div class="row">

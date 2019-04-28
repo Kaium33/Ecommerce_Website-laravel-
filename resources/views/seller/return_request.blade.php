@@ -156,31 +156,37 @@
 		      <li>The Island</li>
 		      
 		      <div style="background-color: #ffffff">
-		      	<% for(var i=0; i < pList.length*10; i++){ %>
+		      	<!-- <% for(var i=0; i < pList.length*10; i++){ %>
 			    	<br>
-			    <% } %>
+			    <% } %> -->
+			    <?php 
+		      	for($i=0; $i < count($returnInfo)*10; $i++){ 
+			    	echo "<br>";
+			    }
+			    ?>
 	    	  </div>
 		    </ul>
 	    </div>
 	    
-		<% for(var i=0; i < pList.length; i++){ %>
+		<!-- <% for(var i=0; i < pList.length; i++){ %> -->
+		<?php for($i=0; $i < count($returnInfo); $i++){ ?>
 			<div class="col-6 col-s-9"  style="margin-left: 70px; margin-right: 70px;background-color:hsla(120,60%,70%,0.3); border-radius: 25px;border: 2px solid #73AD21; padding: 20px">
 				<table>
 					<tr>
 						<td>Return Desc: </td>
-						<td><%= pList[i].return_desc %></td>
+						<td>{{$returnInfo[$i]->return_desc}}</td>
 					</tr>
 					<tr>
 						<td>Return Date: </td>
-						<td><%= pList[i].return_date %></td>
+						<td>{{$returnInfo[$i]->return_date}}</td>
 					</tr>
 					<tr>
 						<td>Seller Id: </td>
-						<td><%= pList[i].seller_id %></td>
+						<td>{{$returnInfo[$i]->seller_id}}</td>
 					</tr>
 					<tr>
 						<td>Product_ Id: </td>
-						<td><%= pList[i].product_id %></td>
+						<td>{{$returnInfo[$i]->product_id}}</td>
 					</tr>
 					<tr>
 						<td><b>Are you AGREE to RETURN  BACK the Product?</b></td>
@@ -196,7 +202,7 @@
 					</tr>
 				</table>
 			</div>
-		<% } %>
+		<?php } ?>
 	</div>
 
 

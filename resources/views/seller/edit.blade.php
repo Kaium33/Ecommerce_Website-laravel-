@@ -160,6 +160,7 @@
 	   
 		<div class="col-6 col-s-9"  style="margin-left: 70px; margin-right: 70px;background-color:hsla(120,60%,70%,0.3); border-radius: 25px;border: 2px solid #73AD21; padding: 20px">
 	    	<form method="post">
+	    		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<table border="0" width="450px" >
 					<tr>
 						<td width="40%">Product Name</td>
