@@ -157,43 +157,45 @@
 	    </div>
 	   
 		<div class="col-6 col-s-9"  style="margin-left: 70px; margin-right: 70px;background-color:hsla(120,60%,70%,0.3); border-radius: 25px;border: 2px solid #73AD21; padding: 20px">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	    	<table>
 				<tr>
 					<td width="40%">Product Name</td>
 					<td width="2%">:</td>
-					<td><%=product_name%></td>
+					<td>{{$product[0]->product_name}}</td>
 				</tr>
 				<tr>
 					<td>Price</td>
 					<td>:</td>
-					<td><%=product_price%></td>
+					<td>{{$product[0]->product_price}}</td>
 				</tr>
 				<tr>
 					<td>Product Available</td>
 					<td>:</td>
-					<td><%=product_avlble%></td>
+					<td>{{$product[0]->product_avlble}}</td>
 				</tr>
 				<tr>
 					<td>Product Sell Price</td>
 					<td>:</td>
-					<td><%=product_sell_price%></td>
+					<td>{{$product[0]->product_sell_price}}</td>
 				</tr>
 				<tr>
 					<td>Product Original Price</td>
 					<td>:</td>
-					<td><%=product_original_price%></td>
+					<td>{{$product[0]->product_original_price}}</td>
 				</tr>
 				<tr>
 					<td>Category Id</td>
 					<td>:</td>
-					<td><%=category_id%></td>
+					<td>{{$product[0]->category_id}}</td>
 				</tr>
 				<tr>
 					<td></td>
 					<td></td>
 					<td>
 						<form method="post">
-						<input type="hidden" name="uid" value="<%=product_id%>">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<!-- <input type="hidden" name="uid" value="{{$product[0]->product_id}}"> -->
 						<button class="button" type="submit" value="Submit">Discard</button>
 						</form>
 					</td>

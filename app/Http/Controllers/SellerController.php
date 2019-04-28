@@ -97,4 +97,20 @@ class SellerController extends Controller
     		return redirect('/seller/edit/{$product_id}');
     	}
     }
+
+    public function deletePage($product_id){
+    	$sql = DB::select("select * from products where product_id = (?)" , [$product_id]);
+
+    	return view('seller.delete')->with('product', $sql);
+    }
+
+    public function deleteProduct(Request $req , $product_id){
+    	// DB::delete("delete from products where product_id = (?)" [$product_id]);
+
+
+    	DB::table('products')->where('product_id' , $product_id)->delete();
+    	error_log('Some message here.');
+
+    	return redirect('/seller/productlist');
+    }
 }
