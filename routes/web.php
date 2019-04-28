@@ -14,6 +14,7 @@ Route::get('/seller/productlist', 'SellerController@productlist')->name('seller.
 
 
 Route::get('/seller/edit/{product_id}', 'SellerController@editPage')->name('seller.edit');
+Route::post('/seller/edit/{product_id}', 'SellerController@updateProduct');
 
 
 Route::get('/seller/addproduct', 'SellerController@addproduct')->name('seller.addproduct');

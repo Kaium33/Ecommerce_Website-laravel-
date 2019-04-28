@@ -196,7 +196,8 @@
 						<td>{{$productsInfo[$i]->category_id}}</td>
 					</tr>
 					<tr>
-						<td><a href="/seller/edit/{{$productsInfo[$i]->product_id}}"><button class="button">Edit</button></a></td>
+						<td><a href="{{ route('seller.edit', [$productsInfo[$i]->product_id]) }}"><button class="button">Edit</button></a></td>
+						<!-- <td><a href="/seller/edit/{{$productsInfo[$i]->product_id}}"><button class="button">Edit</button></a></td> -->
 						<td><a href="/seller/delete/{{$productsInfo[$i]->product_id}}"><button class="button">Delete</button></a></td>
 					</tr>
 				</table>

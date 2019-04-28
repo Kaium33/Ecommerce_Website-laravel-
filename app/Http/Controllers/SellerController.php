@@ -80,4 +80,21 @@ class SellerController extends Controller
 
     	return view('seller.edit')->with('product', $sql);
     }
+
+    public function updateProduct(Request $req , $product_id){
+    	$update = ['productName' => $req->product_name1, 
+    	'productPrice' => $req->product_price1, 
+    	'productAvlble' => $req->product_avlble1, 
+    	'productSellPrice' => $req->product_sell_price1,
+    	'productOriginalPrice' => $req->product_original_price1,
+    	'categoryId' => $req->category_id1];
+
+    	try{
+	    	$sql = DB::update("update products set product_name = (?) , product_price = (?) , product_avlble = (?) , product_sell_price = (?) , product_original_price = (?) , category_id = (?) where product_id = (?)" , [$update['productName'], $update['productPrice'], $update['productAvlble'], $update['productSellPrice'], $update['productOriginalPrice'], $update['categoryId'], $product_id]);
+
+	    	return redirect('/seller/productlist');
+    	}catch(QueryException $exceptn){
+    		return redirect('/seller/edit/{$product_id}');
+    	}
+    }
 }
