@@ -113,4 +113,24 @@ class SellerController extends Controller
 
     	return redirect('/seller/productlist');
     }
+
+    public function orderConfirmation($order_id){
+    	try{
+    		$sql = DB::select("select * from order_t where order_id = (?)" , [$order_id]);
+
+    		return view('seller.confirm_orderd_products')->with('order', $sql);
+    	}catch(QueryException $exceptn){
+    		return redirect('/seller/orderd_products');
+    	}
+    }
+
+    public function deleteConfirmedOrder(Request $req , $product_id){
+    	// DB::delete("delete from products where product_id = (?)" [$product_id]);
+
+    	
+    	DB::table('order_t')->where('order_id' , $product_id)->delete();
+    	error_log('Some message here.');
+
+    	return redirect('/seller/orderd_products');
+    }
 }

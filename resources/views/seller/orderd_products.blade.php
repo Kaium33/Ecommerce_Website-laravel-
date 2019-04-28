@@ -171,6 +171,7 @@
 		<!-- <% for(var i=0; i < pList.length; i++){ %> -->
 		<?php for($i=0; $i < count($productsInfo); $i++){ ?>
 			<div class="col-6 col-s-9"  style="margin-left: 70px; margin-right: 70px;background-color:hsla(120,60%,70%,0.3); border-radius: 25px;border: 2px solid #73AD21; padding: 20px">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<table>
 					<tr>
 						<td>Order Date: </td>
@@ -189,7 +190,10 @@
 						<td>{{$productsInfo[$i]->product_name}}</td>
 					</tr>
 					<tr>
-						<td><a href="/seller/confirm_orderd_products/<%= pList[i].order_id %>"><button class="button">Confirm</button></a></td>
+						<td><a href="{{ route('seller.confirm_orderd_products', [$productsInfo[$i]->order_id]) }}"><button class="button">Confirm</button></a></td>
+
+						<!-- <td><a href="/seller/confirm_orderd_products/{{$productsInfo[$i]->order_id}}"><button class="button">Confirm</button></a></td> -->
+
 						<!-- <td><a href="/seller/edit/<%= pList[i].product_id %>"><button class="button">Confirm</button></a></td> -->
 						<td></td>
 					</tr>

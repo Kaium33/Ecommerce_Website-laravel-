@@ -161,29 +161,30 @@
 				<tr>
 					<td width="40%">Order Date</td>
 					<td width="2%">:</td>
-					<td><%=order_date%></td>
+					<td>{{$order[0]->order_date}}</td>
 				</tr>
 				<tr>
 					<td>Payment Method</td>
 					<td>:</td>
-					<td><%=payment_method%></td>
+					<td>{{$order[0]->payment_method}}</td>
 				</tr>
 				<tr>
 					<td>Payment Status</td>
 					<td>:</td>
-					<td><%=payment_status%></td>
+					<td>{{$order[0]->payment_status}}</td>
 				</tr>
 				<tr>
 					<td>Return Id</td>
 					<td>:</td>
-					<td><%=return_id%></td>
+					<td>{{$order[0]->return_id}}</td>
 				</tr>
 				<tr>
 					<td></td>
 					<td></td>
 					<td>
 						<form method="post">
-							<input type="hidden" name="uid" value="<%=order_id%>">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<!-- <input type="hidden" name="uid" value="<%=order_id%>"> -->
 							<button class="button" type="submit" value="Submit">Confirm</button>
 						</form>
 					</td>

@@ -22,7 +22,11 @@ Route::post('/seller/delete/{product_id}', 'SellerController@deleteProduct');
 
 Route::get('/seller/addproduct', 'SellerController@addproduct')->name('seller.addproduct');
 Route::post('/seller/addproduct', 'SellerController@addproductToDatabase');
+
 Route::get('/seller/orderd_products', 'SellerController@showOrderdProducts')->name('seller.orderd_products');
+
+Route::get('/seller/confirm_orderd_product/{order_id}', 'SellerController@orderConfirmation')->name('seller.confirm_orderd_products');
+Route::post('/seller/confirm_orderd_product/{order_id}', 'SellerController@deleteConfirmedOrder');
 
 Route::get('/seller/return_request', 'SellerController@showReturnRequest')->name('seller.return_request');
 
