@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Arrived Return Request</title>
+	<title>Discard the Item</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 		* {
@@ -139,9 +139,8 @@
 </head>
 <body>
 	<div align="center" class="header">
-  		<h2>Arrived Return Request</h2> 
+  		<h2>Discard the Item</h2> 
 	</div>
-	
 	<div class="row">
 	    <div class="col-3 col-s-3 menu" style="background-color:#333333; height:100%px;">
 		    <ul>
@@ -154,61 +153,50 @@
 		      <li onclick="location.href='../logout';"  style="cursor:pointer;">logout</li>
 		      <li>The City</li>
 		      <li>The Island</li>
-		      
-		      <div style="background-color: #ffffff">
-		      	<!-- <% for(var i=0; i < pList.length*10; i++){ %>
-			    	<br>
-			    <% } %> -->
-			    <?php 
-		      	for($i=0; $i < count($returnInfo)*10; $i++){ 
-			    	echo "<br>";
-			    }
-			    ?>
-	    	  </div>
 		    </ul>
 	    </div>
-	    
-		<!-- <% for(var i=0; i < pList.length; i++){ %> -->
-		<?php for($i=0; $i < count($returnInfo); $i++){ ?>
-			<div class="col-6 col-s-9"  style="margin-left: 70px; margin-right: 70px;background-color:hsla(120,60%,70%,0.3); border-radius: 25px;border: 2px solid #73AD21; padding: 20px">
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				<table>
-					<tr>
-						<td>Return Desc: </td>
-						<td>{{$returnInfo[$i]->return_desc}}</td>
-					</tr>
-					<tr>
-						<td>Return Date: </td>
-						<td>{{$returnInfo[$i]->return_date}}</td>
-					</tr>
-					<tr>
-						<td>Seller Id: </td>
-						<td>{{$returnInfo[$i]->seller_id}}</td>
-					</tr>
-					<tr>
-						<td>Product_ Id: </td>
-						<td>{{$returnInfo[$i]->product_id}}</td>
-					</tr>
-					<!-- <tr>
-						<td><b>Are you AGREE to RETURN  BACK the Product?</b></td>
-						<td></td>
-					</tr> -->
-					<tr>
-						<td></td>
-						<td>
-							<a href="{{ route('seller.confirm_return_request', [$returnInfo[$i]->return_id]) }}"><button class="button" type="submit" value="Submit">Edit</button>
-							<!-- <form method="post">
-							<input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
-							<!-- <input type="hidden" name="uid" value="<%=pList[i].return_id%>"> -->
-							<!-- <a href="{{ route('seller.return_request', [$returnInfo[$i]->return_id]) }}"><button class="button" type="submit" value="Submit">Yes</button>
-							</form> -->
-						</td>
-					</tr>
-				</table>
-			</div>
-		<?php } ?>
+	   
+		<div class="col-6 col-s-9"  style="margin-left: 70px; margin-right: 70px;background-color:hsla(120,60%,70%,0.3); border-radius: 25px;border: 2px solid #73AD21; padding: 20px">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+	    	<table>
+				<tr>
+					<td width="40%">Product Name</td>
+					<td width="2%">:</td>
+					<td>{{$product[0]->return_desc}}</td>
+				</tr>
+				<tr>
+					<td>Price</td>
+					<td>:</td>
+					<td>{{$product[0]->return_date}}</td>
+				</tr>
+				<tr>
+					<td>Product Available</td>
+					<td>:</td>
+					<td>{{$product[0]->seller_id}}</td>
+				</tr>
+				<tr>
+					<td>Product Sell Price</td>
+					<td>:</td>
+					<td>{{$product[0]->product_id}}</td>
+				</tr>
+				<tr>
+					<td colspan="3"><b>Are you AGREE to RETURN  BACK the Product?</b></td>
+					<!-- <td></td>
+					<td></td> -->
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td>
+						<form method="post">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<!-- <input type="hidden" name="uid" value="{{$product[0]->product_id}}"> -->
+						<button class="button" type="submit" value="Submit">Yes</button>
+						</form>
+					</td>
+				</tr>
+			</table>
+	    </div>
 	</div>
-
-
 </body>
 </html>

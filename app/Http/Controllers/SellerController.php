@@ -75,6 +75,24 @@ class SellerController extends Controller
     	return view('seller.return_request')->with('returnInfo' , $returnInfo);
     }
 
+
+    public function editReturnRequest($return_id){
+    	$sql = DB::select("select * from return_t where return_id = (?)" , [$return_id]);
+
+    	return view('seller.confirm_return_request')->with('product', $sql);
+    }
+
+    public function confirmReturnRequest(Request $req , $return_id){
+    	// DB::delete("delete from products where product_id = (?)" [$product_id]);
+
+    	
+    	DB::table('return_t')->where('return_id' , $return_id)->delete();
+    	error_log('Some message here.');
+
+    	return redirect('/seller/return_request');
+    }
+
+
     public function editPage($product_id){
     	$sql = DB::select("select * from products where product_id = (?)" , [$product_id]);
 
@@ -124,11 +142,11 @@ class SellerController extends Controller
     	}
     }
 
-    public function deleteConfirmedOrder(Request $req , $product_id){
+    public function deleteConfirmedOrder(Request $req , $order_id){
     	// DB::delete("delete from products where product_id = (?)" [$product_id]);
 
     	
-    	DB::table('order_t')->where('order_id' , $product_id)->delete();
+    	DB::table('order_t')->where('order_id' , $order_id)->delete();
     	error_log('Some message here.');
 
     	return redirect('/seller/orderd_products');
