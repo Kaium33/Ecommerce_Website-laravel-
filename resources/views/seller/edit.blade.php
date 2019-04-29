@@ -165,32 +165,32 @@
 					<tr>
 						<td width="40%">Product Name</td>
 						<td width="2%">:</td>
-						<td><input type="text"  name="product_name1" /></td>
+						<td><input type="text"  name="product_name1" value="{{old('product_name1')}}"/></td>
 					</tr>
 					<tr>
 						<td>Price</td>
 						<td>:</td>
-						<td><input type="text"  name="product_price1" /></td>
+						<td><input type="text"  name="product_price1" value="{{old('product_price1')}}"/></td>
 					</tr>
 					<tr>
 						<td>Product Available</td>
 						<td>:</td>
-						<td><input type="text"  name="product_avlble1" /></td>
+						<td><input type="text"  name="product_avlble1" value="{{old('product_avlble1')}}"/></td>
 					</tr>
 					<tr>
 						<td>Product Sell Price</td>
 						<td>:</td>
-						<td><input type="text"  name="product_sell_price1" /></td>
+						<td><input type="text"  name="product_sell_price1" value="{{old('product_sell_price1')}}"/></td>
 					</tr>
 					<tr>
 						<td>Product Original Price</td>
 						<td>:</td>
-						<td><input type="text"  name="product_original_price1" /></td>
+						<td><input type="text"  name="product_original_price1" value="{{old('product_original_price1')}}"/></td>
 					</tr>
 					<tr>
 						<td>Category Id</td>
 						<td>:</td>
-						<td><input type="text"  name="category_id1" /></td>
+						<td><input type="text"  name="category_id1" value="{{old('category_id1')}}"/></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -199,6 +199,9 @@
 					</tr>
 				</table>
 			</form>
+			@foreach($errors->all() as $err)
+			{{$err}} <br>
+			@endforeach
 	    </div>
 	</div>
 </body>

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Validator;
 use DB;
+// use Exception;
 
 class SellerController extends Controller
 {
@@ -40,6 +42,19 @@ class SellerController extends Controller
     }
 
     public function editProfile(Request $req , $u_id){
+    	$Validation = Validator::make($req->all() , [
+            'name'=>'required|between:3,30',
+            'password'=>'required|between:5,20',
+            'email'=>'required|email',
+            'address'=>'required',
+            'mobile'=>'required|between:10,14',
+            'status'=>'required',
+            'date'=>'required'
+        ]);
+        $Validation->Validate();
+
+
+
     	$update = ['name' => $req->name,
     	'password' => $req->password,
     	'email' => $req->email, 
@@ -48,11 +63,27 @@ class SellerController extends Controller
     	'status' => $req->status,
     	'date' => $req->date,
     	'type' => $req->selectpicker];
-    	error_log('Some message here.');
+
+
+    	// return $update;
+
+    	// $sql = DB::update("update user set u_password = (?) , u_address = (?) , u_email = (?) , u_mobile = (?) , dob = (?) , u_status = (?) , u_type = (?) , first_name = (?) where u_id = (?)" , [$update['password'], $update['address'], $update['email'], $update['mobile'], $update['date'], $update['status'], $update['type'], $update['name'], $u_id]);
+	    // 	error_log('Some message here.');
+
+	    // $userDetail = DB::select('select * from user where u_id=(?)',[$u_id]);
+
+	    // if($userDetail != []){
+	    // 	session(['userInfo'=>$userDetail]);
+	    // }
+
+	    // return redirect('/seller/profile');
+  
 
 
     	try{
 	    	$sql = DB::update("update user set u_password = (?) , u_address = (?) , u_email = (?) , u_mobile = (?) , dob = (?) , u_status = (?) , u_type = (?) , first_name = (?) where u_id = (?)" , [$update['password'], $update['address'], $update['email'], $update['mobile'], $update['date'], $update['status'], $update['type'], $update['name'], $u_id]);
+	    	error_log('Some message here.');
+
 
 	    	$userDetail = DB::select('select * from user where u_id=(?)',[$u_id]);
 
@@ -61,6 +92,7 @@ class SellerController extends Controller
 	    	}
 
 	    	return redirect('/seller/profile');
+
     	}catch(QueryException $exceptn){
     		return redirect('/seller/edit_profile/{$u_id}');
     	}
@@ -78,6 +110,18 @@ class SellerController extends Controller
     }
 
     public function addproductToDatabase(Request $req){
+    	$Validation = Validator::make($req->all() , [
+            'product_name'=>'required|between:3,30',
+            'product_price'=>'required|between:2,10',
+            'product_avlble'=>'required|between:1,10',
+            'product_sell_price'=>'required|between:2,10',
+            'product_original_price'=>'required|between:2,10',
+            'category_id'=>'required|between:2,10'
+        ]);
+        $Validation->Validate();
+
+
+
     	$product = ['productName' => $req->product_name, 
     	'productPrice' => $req->product_price, 
     	'productAvlble' => $req->product_avlble, 
@@ -143,6 +187,17 @@ class SellerController extends Controller
     }
 
     public function updateProduct(Request $req , $product_id){
+    	$Validation = Validator::make($req->all() , [
+            'product_name1'=>'required|between:3,30',
+            'product_price1'=>'required|between:2,10',
+            'product_avlble1'=>'required|between:1,10',
+            'product_sell_price1'=>'required|between:2,10',
+            'product_original_price1'=>'required|between:2,10',
+            'category_id1'=>'required|between:2,10'
+        ]);
+        $Validation->Validate();
+
+
     	$update = ['productName' => $req->product_name1, 
     	'productPrice' => $req->product_price1, 
     	'productAvlble' => $req->product_avlble1, 

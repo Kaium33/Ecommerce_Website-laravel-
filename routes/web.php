@@ -32,6 +32,7 @@ Route::post('/seller/delete/{product_id}', 'SellerController@deleteProduct');
 Route::get('/seller/addproduct', 'SellerController@addproduct')->name('seller.addproduct');
 Route::post('/seller/addproduct', 'SellerController@addproductToDatabase');
 
+
 Route::get('/seller/orderd_products', 'SellerController@showOrderdProducts')->name('seller.orderd_products');
 
 

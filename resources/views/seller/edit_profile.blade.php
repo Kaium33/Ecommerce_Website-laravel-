@@ -101,37 +101,37 @@
 					<tr>
 						<td width="40%">Name</td>
 						<td width="2%">:</td>
-						<td><input type="text"  name="name" /></td>
+						<td><input type="text"  name="name" value="{{old('name')}}"/></td>
 					</tr>
 					<tr>
 						<td>Password</td>
 						<td>:</td>
-						<td><input type="text"  name="password" /></td>
+						<td><input type="text"  name="password" value="{{ old('password') }}"/></td>
 					</tr>
 					<tr>
 						<td>Email</td>
 						<td>:</td>
-						<td><input type="text"  name="email" /></td>
+						<td><input type="text"  name="email" value="{{ old('email') }}"/></td>
 					</tr>
 					<tr>
 						<td>Address</td>
 						<td>:</td>
-						<td><input type="text"  name="address" /></td>
+						<td><input type="text"  name="address" value="{{ old('address') }}"/></td>
 					</tr>
 					<tr>
 						<td>Mobile</td>
 						<td>:</td>
-						<td><input type="text"  name="mobile" /></td>
+						<td><input type="text"  name="mobile" value="{{ old('mobile') }}"/></td>
 					</tr>
 					<tr>
 						<td>Status</td>
 						<td>:</td>
-						<td><input type="text"  name="status" /></td>
+						<td><input type="text"  name="status" value="{{ old('status') }}"/></td>
 					</tr>
 					<tr>
 						<td>Date of Berth</td>
 						<td>:</td>
-						<td><input type="date"  name="date" /></td>
+						<td><input type="date"  name="date" value="{{ old('date') }}"/></td>
 					</tr>
 					<tr>
 						<td>Type</td>
@@ -148,6 +148,13 @@
 					</tr>
 				</table>
 			</form>
+			@foreach($errors->all() as $err)
+			{{$err}} <br>
+			@endforeach
+
+
+
+
 	    </div>
 	<div>
 		
@@ -155,3 +162,7 @@
 
 </body>
 </html>
+
+<!-- @foreach($errors->all() as $err)
+{{$err}} <br>
+@endforeach -->

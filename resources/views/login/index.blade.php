@@ -12,17 +12,20 @@
 			<table>
 				<tr>
 					<td>Useremail</td>
-					<td><input type="text" name="uemail"></td>
+					<td><input type="text" name="uemail" value="{{old('uemail')}}"></td>
 				</tr>
 				<tr>
 					<td>Password</td>
-					<td><input type="password" name="password"></td>
+					<td><input type="password" name="password" value="{{old('password')}}"></td>
 				</tr>
 				<tr>
 					<td></td>
 					<td><input type="submit" name="submit" value="Submit"></td>
 				</tr>
 			</table>
+			@foreach($errors->all() as $err)
+			{{$err}} <br>
+			@endforeach
 		</fieldset>
 	</form>
 </body>

@@ -4,14 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Validator;
 
 class LoginController extends Controller
 {
     public function index(){
+
     	return view('login.index');
     }
 
     public function verify(Request $req){
+        $Validation = Validator::make($req->all() , [
+            'uemail'=>'required',
+            'password'=>'required|between:5,20'
+        ]);
+        $Validation->Validate();
+
+
     	$user = ['email' => $req->uemail, 'password' => $req->password];
 
     	$userDetail = DB::select('select * from user where u_email=(?) and u_password=(?)',[$user['email'],$user['password']]);
