@@ -67,7 +67,18 @@
 		}
 
 		.button{
-			width: 150px;
+		  background-color: #ff471a;
+		  border: none;
+		  color: white;
+		  width:100px;
+		  padding: 10px;
+		  text-align: center;
+		  font-size: 15px;
+		  cursor: pointer;
+		}
+
+		.button:hover {
+		  background-color: green;
 		}
 
 		.footer {
@@ -136,16 +147,17 @@
 	    </div>
 
 	    <div class="col-6 col-s-9"  style="margin-left: 70px; margin-right: 70px;background-color:hsla(120,60%,70%,0.3); border-radius: 25px;border: 2px solid #73AD21; padding: 20px">
+	    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	    	<table>
 				<tr>
-					<td width="35%">Id</td>
+					<td width="35%">User Name</td>
 					<td width="2%">:</td>
-					<td>{{$userInfo[0]->u_id}}</td>
+					<td>{{$userInfo[0]->first_name}}</td>
 				</tr>
 				<tr>
-					<td>User Name</td>
+					<td>Id</td>
 					<td>:</td>
-					<td>{{$userInfo[0]->first_name}}</td>
+					<td>{{$userInfo[0]->u_id}}</td>
 				</tr>
 				<tr>
 					<td>Password</td>
@@ -158,14 +170,34 @@
 					<td>{{$userInfo[0]->u_type}}</td>
 				</tr>
 				<tr>
+					<td>DOB</td>
+					<td>:</td>
+					<td>{{$userInfo[0]->dob}}</td>
+				</tr>
+				<tr>
 					<td>Email</td>
 					<td>:</td>
 					<td>{{$userInfo[0]->u_email}}</td>
 				</tr>
 				<tr>
+					<td>Address</td>
+					<td>:</td>
+					<td>{{$userInfo[0]->u_address}}</td>
+				</tr>
+				<tr>
 					<td>Mobile</td>
 					<td>:</td>
 					<td>{{$userInfo[0]->u_mobile}}</td>
+				</tr>
+				<tr>
+					<td>Status</td>
+					<td>:</td>
+					<td>{{$userInfo[0]->u_status}}</td>
+				</tr>
+				<tr>
+					<td></a></td>
+					<td></td>
+					<td><a href="{{ route('seller.edit_profile', [$userInfo[0]->u_id]) }}"><button class="button">Edit Profile</button></td>
 				</tr>
 			</table>
 	    </div>

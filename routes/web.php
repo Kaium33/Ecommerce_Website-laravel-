@@ -13,6 +13,14 @@ Route::get('/seller/profile', 'SellerController@profile')->name('seller.profile'
 Route::get('/seller/productlist', 'SellerController@productlist')->name('seller.productlist');
 
 
+
+Route::get('/seller/edit_profile/{u_id}', 'SellerController@showEditProfile')->name('seller.edit_profile');
+Route::post('/seller/edit_profile/{u_id}', 'SellerController@editProfile');
+
+
+
+
+
 Route::get('/seller/edit/{product_id}', 'SellerController@editPage')->name('seller.edit');
 Route::post('/seller/edit/{product_id}', 'SellerController@updateProduct');
 
@@ -36,6 +44,9 @@ Route::get('/seller/return_request', 'SellerController@showReturnRequest')->name
 
 Route::get('/seller/confirm_return_request/{return_id}', 'SellerController@editReturnRequest')->name('seller.confirm_return_request');;
 Route::post('/seller/confirm_return_request/{return_id}', 'SellerController@confirmReturnRequest');
+
+
+
 
 
 

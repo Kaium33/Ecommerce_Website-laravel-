@@ -30,6 +30,49 @@ class SellerController extends Controller
     	return view('seller.productlist')->with('productsInfo' , $productsInfo);
     }
 
+
+
+
+    public function showEditProfile($u_id){
+    	$sql = DB::select("select * from user where u_id = (?)" , [$u_id]);
+
+    	return view('seller.edit_profile')->with('profile', $sql);
+    }
+
+    public function editProfile(Request $req , $u_id){
+    	$update = ['name' => $req->name,
+    	'password' => $req->password,
+    	'email' => $req->email, 
+    	'address' => $req->address, 
+    	'mobile' => $req->mobile,
+    	'status' => $req->status,
+    	'date' => $req->date,
+    	'type' => $req->selectpicker];
+    	error_log('Some message here.');
+
+
+    	try{
+	    	$sql = DB::update("update user set u_password = (?) , u_address = (?) , u_email = (?) , u_mobile = (?) , dob = (?) , u_status = (?) , u_type = (?) , first_name = (?) where u_id = (?)" , [$update['password'], $update['address'], $update['email'], $update['mobile'], $update['date'], $update['status'], $update['type'], $update['name'], $u_id]);
+
+	    	$userDetail = DB::select('select * from user where u_id=(?)',[$u_id]);
+
+	    	if($userDetail != []){
+	    		session(['userInfo'=>$userDetail]);
+	    	}
+
+	    	return redirect('/seller/profile');
+    	}catch(QueryException $exceptn){
+    		return redirect('/seller/edit_profile/{$u_id}');
+    	}
+    }
+
+
+
+
+
+
+
+
     public function addproduct(){
     	return view('seller.addproduct');
     }
